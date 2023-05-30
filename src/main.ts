@@ -27,7 +27,7 @@ export async function bootstrap() {
       .setExternalDoc('Postman Collection', '/docs-json')
       .build();
     document = SwaggerModule.createDocument(app, swaggerOptions);
-    SwaggerModule.setup('swagger', app, document);
+    SwaggerModule.setup('/api-docs', app, document);
     SwaggerModule.setup('/docs', app, document);
   }
   await app.listen(+configService.get('PORT'));
