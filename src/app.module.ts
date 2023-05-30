@@ -14,6 +14,7 @@ import { ResponseFormatter } from './interceptors/formatter/formatter.intercepto
 import { EventEmitterModule } from '@nestjs/event-emitter';
 import { DevtoolsModule } from '@nestjs/devtools-integration';
 import { CacheModule } from '@nestjs/cache-manager';
+import { CategoryModule } from './category/category.module';
 
 const nodeEnv = process.env.NODE_ENV;
 
@@ -61,6 +62,7 @@ process.env.TEST_DB_NAME = `miluxas_test_${Math.random()
     IdentityModule,
     ScheduleModule.forRoot(),
     ProductModule,
+    CategoryModule
   ],
 
   providers: [
