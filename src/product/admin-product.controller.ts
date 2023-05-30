@@ -46,20 +46,6 @@ export class AdminProductController {
       .catch((error) => this.errorHandlerService.getMessage(error));
   }
 
-  @Put("/:id/activation")
-  @Authorization()
-  @ApiOkResponse({
-    type: StandardResponseFactory(Boolean),
-  })
-  async setProductActivation(
-    @Body() body: AdminSetProductActivationBodyDto,
-    @Param() param: IdParamDto
-  ): Promise<boolean | void> {
-    return this.productService
-      .setActivation(param.id, body.active)
-      .catch((error) => this.errorHandlerService.getMessage(error));
-  }
-
   @Get("/:id")
   @ApiCreatedResponse({
     type: StandardResponseFactory(AdminUpdateProductResponseDto),

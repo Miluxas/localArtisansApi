@@ -46,17 +46,5 @@ export class ProductController {
       .catch((error) => this.errorHandlerService.getMessage(error));
   }
 
-  @Post("/register")
-  @ApiCreatedResponse({
-    type: StandardResponseFactory(UserCreateProductResponseDto),
-  })
-  async register(
-    @Body() body: UserCreateProductBodyDto,
-    @Req() requestObject: RequestType
-  ): Promise<UserCreateProductResponseDto | void> {
-    return this.productService
-      .register(body.title, requestObject.user.id)
-      .catch((error) => this.errorHandlerService.getMessage(error));
-  }
 
 }

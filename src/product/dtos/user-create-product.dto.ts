@@ -13,11 +13,12 @@ export class UserCreateProductResponseDto {
   id: number;
 
   @ApiProperty()
-  title: string;
+  name: string;
 
   @ApiProperty()
-  isActive: boolean;
+  description: string;
 
   @ApiProperty()
-  publicKey: string;
+  price: number;
+
 }

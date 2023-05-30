@@ -1,6 +1,6 @@
 export interface IProduct {
-  title: string;
-  parentId?: number;
+  name: string;
+  description: string;
   isActive: boolean;
-  mediaId: number;
+  price: number;
 }
