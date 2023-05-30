@@ -1,0 +1,44 @@
+version: "3.9"
+
+services:
+  api:
+    build:
+      dockerfile: LocalDockerfile
+      context: .
+    depends_on:
+      - postgres
+    env_file:
+      - docker.env
+    ports:
+      - 3001:3001
+    volumes:
+      - '.:/app:rw'
+      - '/app/node_modules'
+
+  postgres:
+    image: postgres:latest
+    cap_add:
+      - SYS_NICE
+    restart: always
+    environment:
+      - POSTGRES_HOST=127.0.0.1
+      - POSTGRES_PORT=5432
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=mysecretpassword
+      - POSTGRES_DATABASE=my_database
+    ports:
+      - '5432:5432'
+    volumes:
+      - postgres:/var/lib/postgres_test
+      
+  redis:
+    image: redis:7.0.5
+    restart: always
+    ports:
+      - '6379:6379'
+
+volumes:
+  postgres:
+    driver: local
+  # postgres_test:
+    # driver: local

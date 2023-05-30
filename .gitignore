@@ -1,0 +1,8 @@
+dist/*
+.DS_Store
+.env
+node_modules/*
+/node_modules
+LocalDockerfile
+.env.docker
+.vscode/settings.json
