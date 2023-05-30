@@ -29,24 +29,23 @@ This repository contains the backend implementation of the project using NestJS,
 ## Installation
 
 1. Clone the repository:
-
+```batch
 git clone https://github.com/miluxas/localArtisansApi.git
-
-css
+```
 
 
 2. Navigate to the project directory:
 
+```batch
 cd online-marketplace-backend
-
-markdown
+```
 
 
 3. Install the dependencies:
 
+```batch
 npm install
-
-markdown
+```
 
 
 4. Configure the environment variables:
@@ -58,21 +57,15 @@ markdown
    - Create a new PostgreSQL or MongoDB database.
    - Update the database connection details in the `.env` file.
 
-6. Run database migrations:
 
-npm run migrate
+6. Start the application:
 
-markdown
-
-
-7. Start the application:
-
+```batch
 npm run start
+```
 
-less
 
-
-8. The server should now be running at `http://localhost:3000`.
+7. The server should now be running at `http://localhost:3000`.
 
 ## API Documentation
 
