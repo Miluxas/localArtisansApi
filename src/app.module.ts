@@ -16,6 +16,7 @@ import { IdentityModule } from "./identity/identity.module";
 import { ResponseFormatter } from "./interceptors/formatter/formatter.interceptor";
 import { ProductModule } from "./product/product.module";
 import { ReviewModule } from "./review/review.module";
+import { OrderModule } from "./order/order.module";
 
 const nodeEnv = process.env.NODE_ENV;
 
@@ -63,6 +64,7 @@ process.env.TEST_DB_NAME = `miluxas_test_${Math.random()
     ProductModule,
     CategoryModule,
     ReviewModule,
+    OrderModule
   ],
 
   providers: [
