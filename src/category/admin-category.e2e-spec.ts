@@ -2,7 +2,7 @@ import * as supertest from 'supertest';
 import { app, baseAfterAll, baseBeforeAll } from '../../test/base_e2e_spec';
 import { CategoryError, categoryErrorMessages } from './category.error';
 
-describe('Admin Category Controller', () => {
+describe('Admin Category Controller', async() => {
   beforeAll(baseBeforeAll);
 
   afterAll(baseAfterAll);
@@ -42,7 +42,7 @@ describe('Admin Category Controller', () => {
   it(' Upload media', uploadMedia);
 
   let mainCategoryId;
-  it(' Admin Create New Category', () => {
+  it(' Admin Create New Category', async() => {
     return supertest
       .agent(app.getHttpServer())
       .post('/admin/categories/create')
@@ -60,7 +60,7 @@ describe('Admin Category Controller', () => {
       });
   });
 
-  it(' Admin Create New Sub Category', () => {
+  it(' Admin Create New Sub Category', async() => {
     return supertest
       .agent(app.getHttpServer())
       .post('/admin/categories/create')
@@ -81,7 +81,7 @@ describe('Admin Category Controller', () => {
       });
   });
 
-  it(' Admin Get Category List', () => {
+  it(' Admin Get Category List', async() => {
     return supertest
       .agent(app.getHttpServer())
       .post('/admin/categories')
@@ -99,7 +99,7 @@ describe('Admin Category Controller', () => {
       });
   });
 
-  it(' Admin Get Main Category Detail', () => {
+  it(' Admin Get Main Category Detail', async() => {
     return supertest
       .agent(app.getHttpServer())
       .get('/admin/categories/2')
@@ -115,7 +115,7 @@ describe('Admin Category Controller', () => {
 
   it(' Upload Other media', uploadMedia);
 
-  it(' Admin Update Main Category', () => {
+  it(' Admin Update Main Category', async() => {
     return supertest
       .agent(app.getHttpServer())
       .put('/admin/categories/2')
@@ -146,7 +146,7 @@ describe('Admin Category Controller', () => {
       .expect(200);
   });
 
-  it(' Exception throw On Get Wrong Id', () => {
+  it(' Exception throw On Get Wrong Id', async() => {
     return supertest
       .agent(app.getHttpServer())
       .get('/admin/categories/10')
@@ -160,7 +160,7 @@ describe('Admin Category Controller', () => {
       });
   });
 
-  it(' Exception throw on create new category without title', () => {
+  it(' Exception throw on create new category without title', async() => {
     return supertest
       .agent(app.getHttpServer())
       .post('/admin/categories/create')
@@ -176,7 +176,7 @@ describe('Admin Category Controller', () => {
       });
   });
 
-  it(' Exception throw on create new category without isActive', () => {
+  it(' Exception throw on create new category without isActive', async() => {
     return supertest
       .agent(app.getHttpServer())
       .post('/admin/categories/create')
@@ -192,7 +192,7 @@ describe('Admin Category Controller', () => {
       });
   });
 
-  it(' Exception throw on create new category without mediaId', () => {
+  it(' Exception throw on create new category without mediaId', async() => {
     return supertest
       .agent(app.getHttpServer())
       .post('/admin/categories/create')

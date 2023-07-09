@@ -7,13 +7,13 @@ import {
 } from '../identity/identity.error';
 
 
-describe('Auth Controller', () => {
+describe('Auth Controller', async() => {
   beforeAll(baseBeforeAll);
 
   afterAll(baseAfterAll);
 
   let adminToken;
-  it(' Admin login ', () => {
+  it(' Admin login ', async() => {
     return supertest
       .agent(app.getHttpServer())
       .post('/admin/auth/login')
@@ -30,7 +30,7 @@ describe('Auth Controller', () => {
   });
 
   let newAdminResetPasswordToken;
-  it(' Admin register new admin', () => {
+  it(' Admin register new admin', async() => {
     return supertest
       .agent(app.getHttpServer())
       .post('/admin/auth/register')
@@ -46,7 +46,7 @@ describe('Auth Controller', () => {
       });
   });
 
-  it(' User can register by admin email', () => {
+  it(' User can register by admin email', async() => {
     return supertest
       .agent(app.getHttpServer())
       .post('/auth/register')
@@ -66,7 +66,7 @@ describe('Auth Controller', () => {
       });
   });
 
-  it(' Admin reset password by token ', () => {
+  it(' Admin reset password by token ', async() => {
     return supertest
       .agent(app.getHttpServer())
       .post('/admin/auth/reset-password')
@@ -77,7 +77,7 @@ describe('Auth Controller', () => {
       .expect(201);
   });
 
-  it(' New admin login with password', () => {
+  it(' New admin login with password', async() => {
     return supertest
       .agent(app.getHttpServer())
       .post('/admin/auth/login')
@@ -94,7 +94,7 @@ describe('Auth Controller', () => {
       });
   });
 
-  it(' Admin can get user list ', () => {
+  it(' Admin can get user list ', async() => {
     return supertest
       .agent(app.getHttpServer())
       .post('/user')
@@ -102,7 +102,7 @@ describe('Auth Controller', () => {
       .expect(201);
   });
 
-  it(' Admin can get profile ', () => {
+  it(' Admin can get profile ', async() => {
     return supertest
       .agent(app.getHttpServer())
       .get('/admin/auth/profile')
@@ -114,7 +114,7 @@ describe('Auth Controller', () => {
       });
   });
 
-  it(' Admin login throw error on normal login ', () => {
+  it(' Admin login throw error on normal login ', async() => {
     return supertest
       .agent(app.getHttpServer())
       .post('/auth/login')
@@ -131,7 +131,7 @@ describe('Auth Controller', () => {
       });
   });
 
-  it(' Admin can run an api with admin layer access ', () => {
+  it(' Admin can run an api with admin layer access ', async() => {
     return supertest
       .agent(app.getHttpServer())
       .get('/admin/user/admin-layer-access')
@@ -140,7 +140,7 @@ describe('Auth Controller', () => {
   });
 
   let resetPasswordToken;
-  it(' Admin should can request reset password link', () => {
+  it(' Admin should can request reset password link', async() => {
     return supertest
       .agent(app.getHttpServer())
       .post('/admin/auth/forgot-password')
@@ -154,7 +154,7 @@ describe('Auth Controller', () => {
       });
   });
 
-  it(' Admin reset password by token ', () => {
+  it(' Admin reset password by token ', async() => {
     return supertest
       .agent(app.getHttpServer())
       .post('/admin/auth/reset-password')
@@ -165,7 +165,7 @@ describe('Auth Controller', () => {
       .expect(201);
   });
 
-  it(' Admin reset password token should been destroyed after first used', () => {
+  it(' Admin reset password token should been destroyed after first used', async() => {
     return supertest
       .agent(app.getHttpServer())
       .post('/admin/auth/reset-password')
@@ -176,7 +176,7 @@ describe('Auth Controller', () => {
       .expect(401);
   });
 
-  it(' Admin login with new password', () => {
+  it(' Admin login with new password', async() => {
     return supertest
       .agent(app.getHttpServer())
       .post('/admin/auth/login')

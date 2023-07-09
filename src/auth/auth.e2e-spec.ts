@@ -19,7 +19,7 @@ describe('Auth Controller', () => {
       .expect(201);
   }
   let userTempToken;
-  it(' User register ', () => {
+  it(' User register ', async() => {
     return supertest
       .agent(app.getHttpServer())
       .post('/auth/register')
@@ -42,7 +42,7 @@ describe('Auth Controller', () => {
       });
   });
 
-  it(' User register throw error on duplicate email', () => {
+  it(' User register throw error on duplicate email', async() => {
     return supertest
       .agent(app.getHttpServer())
       .post('/auth/register')
@@ -63,7 +63,7 @@ describe('Auth Controller', () => {
       });
   });
 
-  it(' User register throw error on invalid email', () => {
+  it(' User register throw error on invalid email', async() => {
     return supertest
       .agent(app.getHttpServer())
       .post('/auth/register')
@@ -78,7 +78,7 @@ describe('Auth Controller', () => {
       .then(checkValidationException);
   });
 
-  it(' User register throw error without email', () => {
+  it(' User register throw error without email', async() => {
     return supertest
       .agent(app.getHttpServer())
       .post('/auth/register')
@@ -92,7 +92,7 @@ describe('Auth Controller', () => {
       .then(checkValidationException);
   });
 
-  it(' User register throw error without first name', () => {
+  it(' User register throw error without first name', async() => {
     return supertest
       .agent(app.getHttpServer())
       .post('/auth/register')
@@ -106,7 +106,7 @@ describe('Auth Controller', () => {
       .then(checkValidationException);
   });
 
-  it(' User register throw error without last name', () => {
+  it(' User register throw error without last name', async() => {
     return supertest
       .agent(app.getHttpServer())
       .post('/auth/register')
@@ -120,7 +120,7 @@ describe('Auth Controller', () => {
       .then(checkValidationException);
   });
 
-  it(' User register throw error without email', () => {
+  it(' User register throw error without email', async() => {
     return supertest
       .agent(app.getHttpServer())
       .post('/auth/register')
@@ -134,7 +134,7 @@ describe('Auth Controller', () => {
       .then(checkValidationException);
   });
 
-  it(' User register throw error without role', () => {
+  it(' User register throw error without role', async() => {
     return supertest
       .agent(app.getHttpServer())
       .post('/auth/register')
@@ -148,7 +148,7 @@ describe('Auth Controller', () => {
       .then(checkValidationException);
   });
 
-  it(' User register throw error with invalid role', () => {
+  it(' User register throw error with invalid role', async() => {
     return supertest
       .agent(app.getHttpServer())
       .post('/auth/register')
@@ -163,7 +163,7 @@ describe('Auth Controller', () => {
       .then(checkValidationException);
   });
 
-  it(' User should get exception when get user list by OTP token', () => {
+  it(' User should get exception when get user list by OTP token', async() => {
     return supertest
       .agent(app.getHttpServer())
       .post('/user')
@@ -171,7 +171,7 @@ describe('Auth Controller', () => {
       .expect(401);
   });
 
-  it(' User verify email by otp code ', () => {
+  it(' User verify email by otp code ', async() => {
     return supertest
       .agent(app.getHttpServer())
       .post('/auth/otp-email')
@@ -188,7 +188,7 @@ describe('Auth Controller', () => {
 
   it(' User can get user list by token', userGetUserList);
 
-  it(' User get exception on verification with duplicate otp code ', () => {
+  it(' User get exception on verification with duplicate otp code ', async() => {
     return supertest
       .agent(app.getHttpServer())
       .post('/auth/otp-email')
@@ -206,7 +206,7 @@ describe('Auth Controller', () => {
   });
 
   let userToken;
-  it(' User login ', () => {
+  it(' User login ', async() => {
     return supertest
       .agent(app.getHttpServer())
       .post('/auth/login')
@@ -224,7 +224,7 @@ describe('Auth Controller', () => {
       });
   });
 
-  it(' User can get profile ', () => {
+  it(' User can get profile ', async() => {
     return supertest
       .agent(app.getHttpServer())
       .get('/auth/profile')
@@ -236,13 +236,13 @@ describe('Auth Controller', () => {
       });
   });
 
-  it(' User get error on user list without login', () => {
+  it(' User get error on user list without login', async() => {
     return supertest.agent(app.getHttpServer()).post('/user').expect(401);
   });
 
   it(' User can get user list ', userGetUserList);
 
-  it(' User login throw error on wrong email ', () => {
+  it(' User login throw error on wrong email ', async() => {
     return supertest
       .agent(app.getHttpServer())
       .post('/auth/login')
@@ -259,7 +259,7 @@ describe('Auth Controller', () => {
       });
   });
 
-  it(' User login throw error without email ', () => {
+  it(' User login throw error without email ', async() => {
     return supertest
       .agent(app.getHttpServer())
       .post('/auth/login')
@@ -273,7 +273,7 @@ describe('Auth Controller', () => {
       });
   });
 
-  it(' User login throw error without password ', () => {
+  it(' User login throw error without password ', async() => {
     return supertest
       .agent(app.getHttpServer())
       .post('/auth/login')
@@ -287,7 +287,7 @@ describe('Auth Controller', () => {
       });
   });
 
-  it(' User should can request reset password ', () => {
+  it(' User should can request reset password ', async() => {
     return supertest
       .agent(app.getHttpServer())
       .post('/auth/forgot-password')
@@ -297,7 +297,7 @@ describe('Auth Controller', () => {
       .expect(201);
   });
   let resetPasswordToken;
-  it(' User should can verify reset password OTP ', () => {
+  it(' User should can verify reset password OTP ', async() => {
     return supertest
       .agent(app.getHttpServer())
       .post('/auth/verify-reset-password-otp')
@@ -312,7 +312,7 @@ describe('Auth Controller', () => {
       });
   });
 
-  it(' User verify email by otp code ', () => {
+  it(' User verify email by otp code ', async() => {
     return supertest
       .agent(app.getHttpServer())
       .post('/auth/reset-password')
@@ -323,7 +323,7 @@ describe('Auth Controller', () => {
       .expect(201);
   });
 
-  it(' User login with new password', () => {
+  it(' User login with new password', async() => {
     return supertest
       .agent(app.getHttpServer())
       .post('/auth/login')
@@ -343,7 +343,7 @@ describe('Auth Controller', () => {
 
   it(' User can get user list by new password', userGetUserList);
 
-  it(' User register by unverified email', () => {
+  it(' User register by unverified email', async() => {
     return supertest
       .agent(app.getHttpServer())
       .post('/auth/register')
@@ -364,7 +364,7 @@ describe('Auth Controller', () => {
       });
   });
 
-  it(' User should can request reset password by unverified email', () => {
+  it(' User should can request reset password by unverified email', async() => {
     return supertest
       .agent(app.getHttpServer())
       .post('/auth/forgot-password')
@@ -375,7 +375,7 @@ describe('Auth Controller', () => {
   });
 
   let resetPasswordTokenForUnverifiedEmail;
-  it(' User should can verify reset password OTP by unverified email', () => {
+  it(' User should can verify reset password OTP by unverified email', async() => {
     return supertest
       .agent(app.getHttpServer())
       .post('/auth/verify-reset-password-otp')
@@ -391,7 +391,7 @@ describe('Auth Controller', () => {
       });
   });
 
-  it(' User verify unverified email by otp code ', () => {
+  it(' User verify unverified email by otp code ', async() => {
     return supertest
       .agent(app.getHttpServer())
       .post('/auth/reset-password')
@@ -402,7 +402,7 @@ describe('Auth Controller', () => {
       .expect(201);
   });
 
-  it(' User login with new password', () => {
+  it(' User login with new password', async() => {
     return supertest
       .agent(app.getHttpServer())
       .post('/auth/login')
@@ -420,7 +420,7 @@ describe('Auth Controller', () => {
       });
   });
 
-  it(' User logout from system', () => {
+  it(' User logout from system', async() => {
     return supertest
       .agent(app.getHttpServer())
       .post('/auth/logout')
@@ -428,7 +428,7 @@ describe('Auth Controller', () => {
       .expect(201);
   });
 
-  it(' User logout from system again without error', () => {
+  it(' User logout from system again without error', async() => {
     return supertest
       .agent(app.getHttpServer())
       .post('/auth/logout')
@@ -436,7 +436,7 @@ describe('Auth Controller', () => {
       .expect(201);
   });
 
-  it(' User can not get user list after logout', () => {
+  it(' User can not get user list after logout', async() => {
     return supertest
       .agent(app.getHttpServer())
       .post('/user')
@@ -444,7 +444,7 @@ describe('Auth Controller', () => {
       .expect(403);
   });
 
-  it(' New user register ', () => {
+  it(' New user register ', async() => {
     return supertest
       .agent(app.getHttpServer())
       .post('/auth/register')
@@ -467,7 +467,7 @@ describe('Auth Controller', () => {
       });
   });
 
-  it(' New user login without email verification ', () => {
+  it(' New user login without email verification ', async() => {
     return supertest
       .agent(app.getHttpServer())
       .post('/auth/login')
@@ -486,7 +486,7 @@ describe('Auth Controller', () => {
       });
   });
 
-  it(' New user verify email by otp code ', () => {
+  it(' New user verify email by otp code ', async() => {
     return supertest
       .agent(app.getHttpServer())
       .post('/auth/otp-email')
@@ -497,7 +497,7 @@ describe('Auth Controller', () => {
       .expect(201);
   });
 
-  it(' New user login after email verification ', () => {
+  it(' New user login after email verification ', async() => {
     return supertest
       .agent(app.getHttpServer())
       .post('/auth/login')
@@ -517,7 +517,7 @@ describe('Auth Controller', () => {
 
   it(' New user can get user list', userGetUserList);
 
-  it(' User can NOT run an api with admin layer access ', () => {
+  it(' User can NOT run an api with admin layer access ', async() => {
     return supertest
       .agent(app.getHttpServer())
       .get('/admin/user/admin-layer-access')

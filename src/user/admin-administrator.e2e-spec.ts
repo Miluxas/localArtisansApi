@@ -14,7 +14,7 @@ describe('Administrator Controller', () => {
   afterAll(baseAfterAll);
 
   let adminToken;
-  it(' Admin login ', () => {
+  it(' Admin login ', async() => {
     return supertest
       .agent(app.getHttpServer())
       .post('/admin/auth/login')
@@ -30,7 +30,7 @@ describe('Administrator Controller', () => {
       });
   });
 
-  it(' Admin get admin detail', () => {
+  it(' Admin get admin detail', async() => {
     return supertest
       .agent(app.getHttpServer())
       .get('/admin/administrators/1')
@@ -42,7 +42,7 @@ describe('Administrator Controller', () => {
       });
   });
 
-  it(' Admin Get Admin List', () => {
+  it(' Admin Get Admin List', async() => {
     return supertest
       .agent(app.getHttpServer())
       .post('/admin/administrators')
@@ -56,7 +56,7 @@ describe('Administrator Controller', () => {
       });
   });
 
-  it(' Admin get admin detail throw exception by invalid id', () => {
+  it(' Admin get admin detail throw exception by invalid id', async() => {
     return supertest
       .agent(app.getHttpServer())
       .get('/admin/administrators/100')

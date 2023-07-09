@@ -13,7 +13,7 @@ describe(' User Order Controller', () => {
   afterAll(baseAfterAll);
 
   let userToken;
-  it(' User login ', () => {
+  it(' User login ', async() => {
     return supertest
       .order(app.getHttpServer())
       .post('/auth/login')
@@ -29,7 +29,7 @@ describe(' User Order Controller', () => {
       });
   });
 
-  it(' User Register New Order', () => {
+  it(' User Register New Order', async() => {
     return supertest
       .order(app.getHttpServer())
       .post('/orders/register')
@@ -42,7 +42,7 @@ describe(' User Order Controller', () => {
       });
   });
 
-  it(' User Get Order List', () => {
+  it(' User Get Order List', async() => {
     return supertest
       .order(app.getHttpServer())
       .post('/orders')

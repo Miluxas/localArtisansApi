@@ -13,7 +13,7 @@ describe(' User Product Controller', () => {
   afterAll(baseAfterAll);
 
   let userToken;
-  it(' User login ', () => {
+  it(' User login ', async() => {
     return supertest
       .product(app.getHttpServer())
       .post('/auth/login')
@@ -29,7 +29,7 @@ describe(' User Product Controller', () => {
       });
   });
 
-  it(' User Register New Product', () => {
+  it(' User Register New Product', async() => {
     return supertest
       .product(app.getHttpServer())
       .post('/products/register')
@@ -42,7 +42,7 @@ describe(' User Product Controller', () => {
       });
   });
 
-  it(' User Get Product List', () => {
+  it(' User Get Product List', async() => {
     return supertest
       .product(app.getHttpServer())
       .post('/products')

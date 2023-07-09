@@ -6,7 +6,7 @@ describe(' User Category Controller', () => {
 
   afterAll(baseAfterAll);
 
-  it(' User Get Category List', () => {
+  it(' User Get Category List', async() => {
     return supertest
       .agent(app.getHttpServer())
       .post('/categories')

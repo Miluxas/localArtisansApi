@@ -8,7 +8,7 @@ describe(' User Controller', () => {
   afterAll(baseAfterAll);
 
   let userToken;
-  it(' User login ', () => {
+  it(' User login ', async() => {
     return supertest
       .agent(app.getHttpServer())
       .post('/auth/login')

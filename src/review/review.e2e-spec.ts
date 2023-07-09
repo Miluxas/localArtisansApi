@@ -18,7 +18,7 @@ describe('Packages Service Controller', () => {
   let freelancerToken;
   let freelancerId;
 
-  it(' Freelancer login ', () => {
+  it(' Freelancer login ', async() => {
     return supertest
       .agent(app.getHttpServer())
       .post('/auth/login')
@@ -37,7 +37,7 @@ describe('Packages Service Controller', () => {
 
   let packageId;
   let serviceId;
-  it(' Freelancer Create New Service', () => {
+  it(' Freelancer Create New Service', async() => {
     return supertest
       .agent(app.getHttpServer())
       .post('/services/create')
@@ -73,7 +73,7 @@ describe('Packages Service Controller', () => {
       });
   });
 
-  it(' Freelancer get Service Package list', () => {
+  it(' Freelancer get Service Package list', async() => {
     return supertest
       .agent(app.getHttpServer())
       .post(`/services/${serviceId}/packages`)
@@ -86,7 +86,7 @@ describe('Packages Service Controller', () => {
   });
 
   let customerToken;
-  it(' Customer login ', () => {
+  it(' Customer login ', async() => {
     return supertest
       .agent(app.getHttpServer())
       .post('/auth/login')
@@ -103,7 +103,7 @@ describe('Packages Service Controller', () => {
   });
 
   let customer2Token;
-  it(' Second Customer login ', () => {
+  it(' Second Customer login ', async() => {
     return supertest
       .agent(app.getHttpServer())
       .post('/auth/login')
@@ -119,7 +119,7 @@ describe('Packages Service Controller', () => {
       });
   });
 
-  it(' Exception throw On Add comment without rate', () => {
+  it(' Exception throw On Add comment without rate', async() => {
     return supertest
       .agent(app.getHttpServer())
       .post(`/packages/${packageId}/comments`)
@@ -135,7 +135,7 @@ describe('Packages Service Controller', () => {
   });
 
   let commentId;
-  it(' Customer Add A Comment To A Package', () => {
+  it(' Customer Add A Comment To A Package', async() => {
     return supertest
       .agent(app.getHttpServer())
       .post(`/packages/${packageId}/comments`)
@@ -166,7 +166,7 @@ describe('Packages Service Controller', () => {
       });
   });
 
-  it(' Customer Add A Comment To A Package Again, Comment should be overwritten', () => {
+  it(' Customer Add A Comment To A Package Again, Comment should be overwritten', async() => {
     return supertest
       .agent(app.getHttpServer())
       .post(`/packages/${packageId}/comments`)
@@ -202,7 +202,7 @@ describe('Packages Service Controller', () => {
       });
   });
 
-  it(' Customer Get Service detail', () => {
+  it(' Customer Get Service detail', async() => {
     return supertest
       .agent(app.getHttpServer())
       .get(`/services/${serviceId}`)
@@ -215,7 +215,7 @@ describe('Packages Service Controller', () => {
       });
   });
 
-  it(' Customer Update A Comment', () => {
+  it(' Customer Update A Comment', async() => {
     return supertest
       .agent(app.getHttpServer())
       .put(`/packages/${packageId}/comments/${commentId}`)
@@ -251,7 +251,7 @@ describe('Packages Service Controller', () => {
       });
   });
 
-  it(' Exception throw On Update Other customer comment', () => {
+  it(' Exception throw On Update Other customer comment', async() => {
     return supertest
       .agent(app.getHttpServer())
       .put(`/packages/${packageId}/comments/${commentId}`)
@@ -271,7 +271,7 @@ describe('Packages Service Controller', () => {
       });
   });
 
-  it(' Customer Get Package Detail', () => {
+  it(' Customer Get Package Detail', async() => {
     return supertest
       .agent(app.getHttpServer())
       .get(`/packages/${packageId}`)
@@ -284,7 +284,7 @@ describe('Packages Service Controller', () => {
       });
   });
 
-  it(' Customer Delete A Comment', () => {
+  it(' Customer Delete A Comment', async() => {
     return supertest
       .agent(app.getHttpServer())
       .delete(`/packages/${packageId}/comments/${commentId}`)
@@ -308,7 +308,7 @@ describe('Packages Service Controller', () => {
       });
   });
 
-  it(' Exception throw On Delete Other customer comment', () => {
+  it(' Exception throw On Delete Other customer comment', async() => {
     return supertest
       .agent(app.getHttpServer())
       .delete(`/packages/${packageId}/comments/${commentId}`)

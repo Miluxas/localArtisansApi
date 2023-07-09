@@ -13,7 +13,7 @@ describe('User Admin Controller', () => {
   afterAll(baseAfterAll);
 
   let adminToken;
-  it(' Admin login ', () => {
+  it(' Admin login ', async() => {
     return supertest
       .agent(app.getHttpServer())
       .post('/admin/auth/login')
@@ -28,7 +28,7 @@ describe('User Admin Controller', () => {
         adminToken = resultObject.payload.token;
       });
   });
-  it('Admin Get User List By Sort', () => {
+  it('Admin Get User List By Sort', async() => {
     return (
       supertest
         .agent(app.getHttpServer())
@@ -66,7 +66,7 @@ describe('User Admin Controller', () => {
   });
 
   let userToken;
-  it(' User login ', () => {
+  it(' User login ', async() => {
     return supertest
       .agent(app.getHttpServer())
       .post('/auth/login')
@@ -81,7 +81,7 @@ describe('User Admin Controller', () => {
         userToken = resultObject.payload.token;
       });
   });
-  it(' User can not get user list after has been blocked with admin', () => {
+  it(' User can not get user list after has been blocked with admin', async() => {
     return supertest
       .agent(app.getHttpServer())
       .get('/admin/user/list')
@@ -100,7 +100,7 @@ describe('User Admin Controller', () => {
       .expect(200);
   });
 
-  it(' Blocked user login should throw exception ', () => {
+  it(' Blocked user login should throw exception ', async() => {
     return supertest
       .agent(app.getHttpServer())
       .post('/auth/login')
